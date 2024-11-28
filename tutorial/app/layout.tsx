@@ -1,8 +1,10 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import { Inter, Inconsolata } from "next/font/google";
+import { Inter, Inconsolata, Roboto } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
+const inconsolata = Inconsolata({ subsets: ["latin"] });
+const roboto = Roboto({ subsets: ["latin"], weight: ["400"] });
 
 export default function LayoutPage({
   children,
