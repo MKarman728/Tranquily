@@ -1,4 +1,5 @@
 import React from "react";
+import Beach from "@/images/alexander-akimenko-tWWdVrUSeik-unsplash.jpg";
 
 function IdPage({ params }: { params: { id: string } }) {
   return (
