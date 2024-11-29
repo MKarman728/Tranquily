@@ -1,6 +1,8 @@
 import React from "react";
 import Beach from "@/images/alexander-akimenko-tWWdVrUSeik-unsplash.jpg";
 import Image from "next/image";
+
+const url = "https://www.course-api.com/images/tours/tour-1.jpeg";
 // adding Beach image
 function IdPage({ params }: { params: { id: string } }) {
   return (
@@ -20,7 +22,16 @@ function IdPage({ params }: { params: { id: string } }) {
           <h2>Local Image</h2>
         </div>
         {/* Remote image */}
-        <div></div>
+        <div>
+          <Image
+            src={url}
+            alt="tour"
+            width={192}
+            height={192}
+            className="w-48 h-48 object-cover rounded"
+          />
+          <h2>Remote Image</h2>
+        </div>
       </section>
     </div>
   );
