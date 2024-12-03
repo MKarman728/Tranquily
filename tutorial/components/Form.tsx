@@ -1,5 +1,14 @@
-import React from "react";
+import { useFormState, useFormStatus } from "react-dom";
 import { createUser } from "@/app/utils/actions";
+
+const SubmitButton = () => {
+  const { pending } = useFormStatus();
+  return (
+    <button type="submit" className={btnStyle} disabled={pending}>
+      {pending ? "submitting..." : "submit"}
+    </button>
+  );
+};
 
 function Form() {
   return (
@@ -19,9 +28,7 @@ function Form() {
         required
         className={inputStyle}
       />
-      <button type="submit" className={btnStyle}>
-        submit
-      </button>
+      <SubmitButton />
     </form>
   );
 }
