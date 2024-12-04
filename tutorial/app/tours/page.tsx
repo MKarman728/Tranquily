@@ -24,6 +24,7 @@ async function ToursPage() {
             id={tour.id}
             href={`tours/${tour.id}`}
             className="hover:text-blue-500"
+            key={tour.id}
           >
             <div className="relative h-48 mb-2">
               <Image

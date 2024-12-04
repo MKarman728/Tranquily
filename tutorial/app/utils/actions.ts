@@ -1,7 +1,6 @@
 "use server";
 import { readFile, writeFile } from "fs/promises";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 type User = {
   id: string;
