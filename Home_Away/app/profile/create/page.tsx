@@ -2,11 +2,7 @@ import FormContainer from "@/components/form/FormContainner";
 import FormInput from "@/components/form/FormInput";
 import SubmitButton from "@/components/form/Buttons";
 import { Sub } from "@radix-ui/react-dropdown-menu";
-const createProfileAction = async (prevState: any, formData: FormData) => {
-  "use server";
-  const firstName = formData.get("firstName") as string;
-  return { message: "Profile Created" };
-};
+import { createProfileAction } from "@/utils/actions";
 
 function CreateProfilePage() {
   return (
@@ -19,9 +15,9 @@ function CreateProfilePage() {
             <FormInput type="text" name="lastName" label="Last Name" />
             <FormInput type="text" name="username" label="Username" />
           </div>
+          <SubmitButton text="Create Profile" className="mt-8" />
         </FormContainer>
       </div>
-      <SubmitButton text="Create Profile" className="mt-8" />
     </section>
   );
 }
