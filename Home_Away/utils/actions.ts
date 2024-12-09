@@ -11,13 +11,27 @@ export const createProfileAction = async (
 ) => {
   try {
     const user = await currentUser();
-    console.log(user);
+    if (!user) throw new Error("Please login to create new profile");
     const rawData = Object.fromEntries(formData);
     const validatedFields = profileSchema.parse(rawData);
-    console.log(validatedFields);
-    return { message: "Profile created" };
+    await db.profile.create({
+      data: {
+        clerkId: user.id,
+        email: user.emailAddresses[0].emailAddress,
+        profileImage: user.imageUrl ?? "",
+        ...validatedFields,
+      },
+    });
+    await clerkClient.users.updateUserMetadata(user.id, {
+      privateMetadata: {
+        hasProfile: true,
+      },
+    });
   } catch (error) {
-    console.log(error);
-    return { message: "there was an error", variant: "destructive" };
+    return {
+      message: error instanceof Error ? error.message : "An error occurred",
+      variant: "destructive",
+    };
   }
+  redirect("/");
 };
