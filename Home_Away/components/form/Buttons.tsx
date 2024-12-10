@@ -8,7 +8,7 @@ type SubmitButtonProps = {
   text?: string;
 };
 
-export default function SubmitButton({
+export function SubmitButton({
   className = "",
   text = "submit",
 }: SubmitButtonProps) {
