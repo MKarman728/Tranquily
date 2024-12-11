@@ -2,6 +2,7 @@ import FormInput from "@/components/form/FormInput";
 import FormContainer from "@/components/form/FormContainer";
 import { createPropertyAction } from "@/utils/actions";
 import { SubmitButton } from "@/components/form/Buttons";
+import PriceInput from "@/components/form/PriceInput";
 
 function CreatePropertyPage() {
   return (
@@ -27,6 +28,7 @@ function CreatePropertyPage() {
               defaultValue="Dream Getaway Awaits You Here"
             />
             {/* Price */}
+            <PriceInput />
             {/* Categories */}
           </div>
           {/* textarea / description */}
