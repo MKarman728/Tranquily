@@ -1,5 +1,5 @@
 "use server";
-import { profileSchema, validateWithZodSchemna } from "./schemas";
+import { profileSchema, validateWithZodSchema, imageSchema } from "./schemas";
 import db from "./db";
 import { auth, clerkClient, currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
@@ -34,7 +34,7 @@ export const createProfileAction = async (
     const user = await currentUser();
     if (!user) throw new Error("Please login to create new profile");
     const rawData = Object.fromEntries(formData);
-    const validatedFields = validateWithZodSchemna(profileSchema, rawData);
+    const validatedFields = validateWithZodSchema(profileSchema, rawData);
     await db.profile.create({
       data: {
         clerkId: user.id,
@@ -89,7 +89,7 @@ export const updateProfileAction = async (
   const user = await getAuthUser();
   try {
     const rawData = Object.fromEntries(formData);
-    const validatedFields = validateWithZodSchemna(profileSchema, rawData);
+    const validatedFields = validateWithZodSchema(profileSchema, rawData);
 
     await db.profile.update({
       where: {
@@ -102,4 +102,13 @@ export const updateProfileAction = async (
   } catch (error) {
     return renderError(error);
   }
+};
+
+export const updateProfileImageAction = async (
+  prevState: any,
+  formData: FormData
+): Promise<{ message: string }> => {
+  const image = formData.get("image") as File;
+  const validatedFields = validateWithZodSchema(imageSchema, { image });
+  return { message: "Profile image updated successfully" };
 };
