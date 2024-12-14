@@ -1,12 +1,22 @@
-import { Button } from "@/components/ui/button";
-const HomePage = () => {
+import CategoryList from "@/components/home/CategoryList";
+import PropertiesList from "@/components/home/PropertiesList";
+const HomePage = ({
+  searchParams,
+}: {
+  searchParams: { category?: string; search?: string };
+}) => {
+  console.log(searchParams.category);
   return (
-    <div>
-      <h1 className="text-3xl">HomeAway Project - Starter</h1>
-      <Button variant="outline" size="lg">
-        Click Me
-      </Button>
-    </div>
+    <section>
+      <CategoryList
+        category={searchParams.category}
+        search={searchParams.search}
+      />
+      <PropertiesList
+        category={searchParams.category}
+        search={searchParams.search}
+      />
+    </section>
   );
 };
 export default HomePage;
