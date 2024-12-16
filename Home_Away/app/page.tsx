@@ -1,5 +1,6 @@
 import CategoryList from "@/components/home/CategoryList";
 import PropertiesList from "@/components/home/PropertiesList";
+import PropertiesContainer from "@/components/home/PropertiesContainer";
 const HomePage = ({
   searchParams,
 }: {
@@ -12,7 +13,7 @@ const HomePage = ({
         category={searchParams.category}
         search={searchParams.search}
       />
-      <PropertiesList
+      <PropertiesContainer
         category={searchParams.category}
         search={searchParams.search}
       />
