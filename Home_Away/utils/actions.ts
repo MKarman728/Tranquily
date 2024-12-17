@@ -159,7 +159,7 @@ export const createPropertyAction = async (
 
 export const fetchProperties = async ({
   search = "",
-  category = "",
+  category,
 }: {
   search?: string;
   category?: string;
@@ -177,11 +177,8 @@ export const fetchProperties = async ({
       name: true,
       tagline: true,
       country: true,
-      price: true,
       image: true,
-    },
-    orderBy: {
-      createdAt: "desc",
+      price: true,
     },
   });
   return properties;

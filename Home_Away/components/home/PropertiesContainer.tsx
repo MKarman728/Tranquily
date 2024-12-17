@@ -14,6 +14,7 @@ async function PropertiesContainer({
     category,
     search,
   });
+  console.log(properties);
   if (properties.length === 0) {
     return (
       <EmptyList
