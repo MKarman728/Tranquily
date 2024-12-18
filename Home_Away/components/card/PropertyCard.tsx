@@ -21,11 +21,14 @@ function PropertyCard({ property }: { property: PropertyCardProps }) {
             className="rounded-md object-cover transform group-hover:scale-110 transition-transform duration-500"
           />
         </div>
-        <div className="flex justify-between items-center">
-          <h3 className="font-semibold text-sm mt-1">
-            {name.substring(0, 30)}
-          </h3>
-          {/* Property rating */}
+        <div className="flex flex-col justify-between items-left">
+          <div className="flex justify-between">
+            <h3 className="font-semibold text-sm mt-1">
+              {name.substring(0, 30)}
+            </h3>
+            {/* Property rating */}
+            <PropertyRating inPage={false} propertyId={propertyId} />
+          </div>
           <p className="text-sm mt-1 text-muted-foreground">
             {tagline.substring(0, 40)}
           </p>
