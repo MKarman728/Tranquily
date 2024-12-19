@@ -1,23 +1,25 @@
-import CategoryList from "@/components/home/CategoryList";
-import PropertiesList from "@/components/home/PropertiesList";
+import CategoriesList from "@/components/home/CategoryList";
 import PropertiesContainer from "@/components/home/PropertiesContainer";
-const HomePage = ({
+import { Suspense } from "react";
+import LoadingCards from "@/components/card/LoadingCards";
+function HomePage({
   searchParams,
 }: {
   searchParams: { category?: string; search?: string };
-}) => {
-  console.log(searchParams.category);
+}) {
   return (
     <section>
-      <CategoryList
-        category={searchParams.category}
-        search={searchParams.search}
+      <CategoriesList
+        category={searchParams?.category}
+        search={searchParams?.search}
       />
-      <PropertiesContainer
-        category={searchParams.category}
-        search={searchParams.search}
-      />
+      <Suspense fallback={<LoadingCards />}>
+        <PropertiesContainer
+          category={searchParams?.category}
+          search={searchParams?.search}
+        />
+      </Suspense>
     </section>
   );
-};
+}
 export default HomePage;
