@@ -18,7 +18,7 @@ function NavSearch() {
     } else {
       params.delete("search");
     }
-    replace(`${pathname}? ${params.toString()} `);
+    replace(`${pathname}?${params.toString()} `);
   }, 500);
 
   useEffect(() => {
@@ -33,6 +33,7 @@ function NavSearch() {
       className="max-w-sm dark:bg-muted"
       onChange={(e) => {
         setSearch(e.target.value);
+        handleSearch(e.target.value);
       }}
       value={search}
     />
