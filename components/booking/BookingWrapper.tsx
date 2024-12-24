@@ -14,7 +14,7 @@ type BookingWrapperProps = {
 function BookingWrapper({ propertyId, price, bookings }: BookingWrapperProps) {
   useEffect(() => {
     useProperty.setState({ propertyId, price, bookings });
-  });
+  }, []);
   return (
     <>
       <BookingCalendar />
