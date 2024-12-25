@@ -23,6 +23,7 @@ async function EditRentalPage({ params }: { params: { id: string } }) {
   if (!property) {
     redirect("/");
   }
+  const defaultAmenities: Amenity[] = JSON.parse(property.amenities);
   return (
     <section>
       <h1 className="text-2xl font-semibold mb-8 capitalize">Edit Property</h1>
@@ -67,6 +68,8 @@ async function EditRentalPage({ params }: { params: { id: string } }) {
           <CounterInput detail="beds" defaultValue={property.beds} />
           <CounterInput detail="baths" defaultValue={property.baths} />
           <SubmitButton text="edit property" className="mt-12" />
+          <h3 className="text-lg mt-10 mb-6 font-medium">Amenities</h3>
+          <AmenitiesInput defaultValue={defaultAmenities} />
         </FormContainer>
       </div>
     </section>
