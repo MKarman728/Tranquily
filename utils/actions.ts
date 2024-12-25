@@ -498,9 +498,9 @@ export const fetchRentals = async () => {
         },
       });
       return {
-        ...rentals,
+        ...rental,
         totalNightsSum: totalNightsSum._sum.totalNights,
-        orderTotal: orderTotalSum._sum.orderTotal,
+        orderTotalSum: orderTotalSum._sum.orderTotal,
       };
     })
   );
