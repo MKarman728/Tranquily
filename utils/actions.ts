@@ -14,6 +14,7 @@ import { useStyleRegistry } from "styled-jsx";
 import { error } from "console";
 import { uploadImage } from "./supabase";
 import { calculateTotals } from "./calculateTotals";
+import { getURL } from "next/dist/shared/lib/utils";
 
 const getAuthUser = async () => {
   const user = await currentUser();
@@ -536,10 +537,55 @@ export const fetchRentalDetails = async (propertyId: string) => {
   return rentalDetails;
 };
 
-export const updatePropertyAction = async () => {
-  return { message: "update property action" };
+export const updatePropertyAction = async (
+  prevState: any,
+  formData: FormData
+): Promise<{ message: string }> => {
+  const user = await getAuthUser();
+  const propertyId = formData.get("id") as string;
+
+  try {
+    const rawData = Object.fromEntries(formData);
+    const validatedFields = validateWithZodSchema(propertySchema, rawData);
+    await db.property.update({
+      where: {
+        id: propertyId,
+        profileId: user.id,
+      },
+      data: {
+        ...validatedFields,
+      },
+    });
+    revalidatePath(`/rentals/${propertyId}/edit`);
+    return { message: "update successful" };
+  } catch (error) {
+    return renderError(error);
+  }
 };
 
-export const updatePropertyImageAction = async () => {
-  return { message: "update property image" };
+export const updatePropertyImageAction = async (
+  prevState: any,
+  formData: FormData
+): Promise<{ message: string }> => {
+  const user = await getAuthUser();
+  const propertyId = formData.get("id") as string;
+
+  try {
+    const image = formData.get("image") as File;
+    const validatedFields = validateWithZodSchema(imageSchema, { image });
+    const fullPath = await uploadImage(validatedFields.image);
+    await db.property.update({
+      where: {
+        id: propertyId,
+        profileId: user.id,
+      },
+      data: {
+        image: fullPath,
+      },
+    });
+    revalidatePath(`/rentals/${propertyId}/edit`);
+    return { message: "Property image updated successfully." };
+  } catch (error) {
+    return renderError(error);
+  }
 };
