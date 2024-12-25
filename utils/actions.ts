@@ -527,12 +527,13 @@ export const deleteRentalAction = async (prevState: { propertyId: string }) => {
 
 export const fetchRentalDetails = async (propertyId: string) => {
   const user = await getAuthUser();
-  const propertyDetails = await db.property.findUnique({
+  const rentalDetails = await db.property.findUnique({
     where: {
       id: propertyId,
       profileId: user.id,
     },
   });
+  return rentalDetails;
 };
 
 export const updatePropertyAction = async () => {
