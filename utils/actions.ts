@@ -663,4 +663,5 @@ export const fetchChartsData = async () => {
     }
     return total;
   }, [] as Array<{ date: string; count: number }>);
+  return bookingsPerMonth;
 };
