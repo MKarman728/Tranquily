@@ -18,13 +18,13 @@ Users are able to search by property names and taglines using the search bar as 
 
 ### Property Details
 
-When a property is selected the user is able to see details about the property as well as select dates to book the property. Users can also see if their dates have been booked by other users.
+When a property is selected the user is able to see details about the property as well as select dates to book the property. Users can also see if their dates have been booked by other users. Information is retrieved from supabase using Prisma to fetch property details based on property id selected and rendered for each page.
 
 ![Property Details](./propertydetails.png)
 
 ### Payment
 
-Payments are handled through Stripe. Users can select dates based on a shadCN UI calendar and the summary costs will be displayed below. If the user is ready to reserve the dates a Reserve option is available where the user can input their card information, cardholder name, country, zip, and select pay.
+Payments are handled through Stripe. Users can select dates based on a shadCN UI calendar and the summary costs will be displayed below. If the user is ready to reserve the dates a Reserve option is available where the user can input their card information, cardholder name, country, zip, and select pay to proceed.
 
 If you would like to see this in action please use:
 Email: codeskool0@gmail.com
@@ -35,3 +35,18 @@ Cardholder Name: Susan Stone
 Country: United States
 Zip: 93841
 ![Payments](./payments.png)
+
+### Bookings
+
+The bookings page displays all of the users bookings through Tranquilly. Users can also cancel the bookings by selecting the trash icon next to each booking to delete and cancel the booking.
+![Bookings](./bookings.png)
+
+### Reservations
+
+If the user has properties listed the user can view all reservations for their rental properties on the reservations list and the details about each reservation as well as a summary above.The summary includes the amount of reservations, the nights booked, and total expected gross revenue on the properties.
+![Reservations](./reservations.png)
+
+### Create Rentals
+
+Create rentals provides a form for users to input the property rental details. Users are able to provide a name, tagline, price per night, select a category, description, counttry, select an image, set the guests, bedrooms, beds, baths, and amenities for the property. Once information has been filled out the user can select create rental where the property will be pushed to supabase for that user and re-rendered to display the new property listing.›
+![CreateRental](./createRental.png)
