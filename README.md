@@ -13,7 +13,7 @@ Tranquilly is an airbnb clone that utilizes NextJS+Typescript to create a full s
 
 ### Home Page
 
-Users are able to search by property names/taglines using the search bar as well as sort by category from the home menu to see all properties available.
+Users are able to search by property names and taglines using the search bar as well as sort by category from the home menu to see all properties available.
 ![Home Page](./homepage.png)
 
 ### Property Details
@@ -24,4 +24,14 @@ When a property is selected the user is able to see details about the property a
 
 ### Payment
 
-Payments are handled through stripe.
+Payments are handled through Stripe. Users can select dates based on a shadCN UI calendar and the summary costs will be displayed below. If the user is ready to reserve the dates a Reserve option is available where the user can input their card information, cardholder name, country, zip, and select pay.
+
+If you would like to see this in action please use:
+Email: codeskool0@gmail.com
+Card Information: 4242 4242 4242 4242
+Expiration Date: 08/28
+Security Code: 123
+Cardholder Name: Susan Stone
+Country: United States
+Zip: 93841
+![Payments](./payments.png)
